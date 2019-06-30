@@ -5,18 +5,11 @@ import TodoItems from "./TodoItems";
 import "./TodoList.css";
 
 class TodoList extends Component {
-    constructor(props) {
-        super(props);
+    state = {
+        items: []
+    };
 
-        this.state = {
-            items: []
-        };
-
-        this.addItem = this.addItem.bind(this);
-        this.deleteItem = this.deleteItem.bind(this);
-    }
-
-    addItem(e) {
+    addItem = e => {
         let newItem = {};
         if (this._inputElement.value !== "") {
             newItem = {
@@ -36,12 +29,12 @@ class TodoList extends Component {
         console.log(this.state.items);
 
         e.preventDefault();
-    }
+    };
 
-    deleteItem(key) {
+    deleteItem = key => {
         const filteredItems = this.state.items.filter(item => item.key !== key);
         this.setState({ items: filteredItems });
-    }
+    };
 
     render() {
         return (
